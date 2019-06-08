@@ -168,7 +168,7 @@ def search_airplanes():
       query['query']['bool']['must'].append({'match': {field: value}})
 
   # Query elasticsearch, process to get records and count
-  results = elastic.search(query, index='agile_data_science_airplanes')
+  results = elastic.search(query, index='agile_data_science')
   airplanes, airplane_count = search_helpers.process_search(results)
 
   # Persist search parameters in the form template
@@ -228,6 +228,11 @@ def airline2(carrier_code):
     airline_airplanes=airline_airplanes,
     carrier_code=carrier_code
   )
+
+@app.route("/airports/<code>")
+def airports_code(code):
+    airlines_in_airport = client.agile_data_science.airlines_per_airport.find_one({'code': code})
+    return render_template("airlines_in_airport.html", airlines_in_airport=airlines_in_airport)
 
 # Controller: Fetch an airplane entity page
 @app.route("/")

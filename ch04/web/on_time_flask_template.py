@@ -82,7 +82,7 @@ def list_flights(origin, dest, flight_date):
   )
   flight_count = flights.count()
   flights = flights.skip(start).limit(width)
-  
+    
   return render_template(
     'flights.html', 
     flights=flights, 
@@ -121,19 +121,12 @@ def search_flights():
       'bool': {
         'must': []}
     },
-<<<<<<< HEAD
-      'sort': [
-      {'FlightDate': 'asc'},
-     ],
-     'from': start,
-     'size': config.RECORDS_PER_PAGE
-=======
     'sort': [
-      {'FlightDate': 'asc'},
+        {'FlightDate': 'asc'},
+        '_score'
     ],
     'from': start,
     'size': config.RECORDS_PER_PAGE
->>>>>>> e67f89d00d650b9208180d83b115727e7af238fa
   }
   
   # Add any search parameters present

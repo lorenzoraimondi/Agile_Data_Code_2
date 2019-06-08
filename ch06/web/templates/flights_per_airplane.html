@@ -19,8 +19,8 @@
           <td><a href="/airlines/{{flight['Carrier']}}">{{flight['Carrier']}}</a></td>
           <td>{{flight['FlightDate']}}</td>
           <td><a href="/on_time_performance?Carrier={{flight['Carrier']}}&FlightDate={{flight['FlightDate']}}&FlightNum={{flight['FlightNum']}}">{{flight['FlightNum']}}</a></td>
-          <td>{{flight['Origin']}}</td>
-          <td>{{flight['Dest']}}</td>
+          <td><a href="/airports/{{flight['Origin']}}">{{flight['Origin']}}</td>
+          <td><a href="/airports/{{flight['Dest']}}">{{flight['Dest']}}</td>
         </tr>
         {% endfor %}
       </tbody>
